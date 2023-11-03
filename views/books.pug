@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  - let results=[{name:"Half Girlfriend",author:"Chetan Bhagat",price:500},{name:"One Indian Girl",author:"Chetan Bhagat",price:300},{name:"Heart of Darkness",author:"Joseph",price:550}]
+        div(class="row")
+            each form,item in results
+                div(class = "col-sm-2 bg-secondary" onclick=`buy(${item})` ) #{form.name}              
+                div(class = "col-sm-2 bg-secondary" onclick=`buy(${item})` ) #{form.author}                
+                div(class = "col-sm-2 bg-secondary" onclick=`buy(${item})` ) #{form.price}
+                hr
+        script.
+           function buy(x)
+           {
+              alert(`You purchased Item ${x+1}`)
+           }

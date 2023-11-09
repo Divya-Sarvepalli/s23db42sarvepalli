@@ -1,8 +1,16 @@
 var Novel = require('../models/Novel');
 // List of all Novels
-exports.Novel_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Novel list');
-};
+exports.Novel_list = async function(req, res) {
+    try{
+    theNovels = await Novel.find();
+    res.send(theNovels);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+
 // for a specific Novel.
 exports.Novel_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Novel detail: ' + req.params.id);

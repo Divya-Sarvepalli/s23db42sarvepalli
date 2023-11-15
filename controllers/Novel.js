@@ -11,6 +11,19 @@ exports.Novel_list = async function(req, res) {
     }
     };
 
+    // Handle Novel delete on DELETE.
+exports.Novel_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Novel.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
 // for a specific Novel.
 //exports.Novel_detail = function(req, res) {
 //res.send('NOT IMPLEMENTED: Novel detail: ' + req.params.id);
@@ -32,10 +45,12 @@ res.send(`{"error": document for id ${req.params.id} not found`);
 exports.Novel_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: Novel create POST');
 };
-// Handle Novel delete form on DELETE.
-exports.Novel_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Novel delete DELETE ' + req.params.id);
-};
+
+//Handle Novel delete form on DELETE.
+//exports.Novel_delete = function(req, res) {
+//res.send('NOT IMPLEMENTED: Novel delete DELETE ' + req.params.id);
+//};
+
 // Handle Novel update form on PUT.
 
 exports.Novel_update_put = async function(req, res) {
@@ -67,6 +82,20 @@ exports.Novel_view_all_Page = async function(req, res) {
     catch(err){
     res.status(500);
     res.send(`{"error": ${err}}`);
+    }
+    };
+
+    // Handle a show one view with id specified by query
+exports.Novel_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Novel.findById( req.query.id)
+    res.render('Noveldetail',
+    { title: 'Novel Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
     };
 

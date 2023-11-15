@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  - let Novelid = toShow._id
+  - let Novel_type = toShow.Novel_type
+  - let Novelcost = toShow.cost
+  - let Novelsize = toShow.size
+
+  div
+    div.row
+      div(class='NovelAttr mr-3') Novel ID is:
+      div #{Novelid}
+
+    div.row
+      div(class='NovelAttr mr-3') Novel Type is:
+      div #{Novel_type}
+
+    div.row
+      div(class='NovelAttr mr-3') Novel Size is:
+      div #{Novelsize}
+
+    div.row
+      div(class='NovelAttr mr-3') Novel Cost is:
+      div #{Novelcost}

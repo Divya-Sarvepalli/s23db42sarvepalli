@@ -98,7 +98,7 @@ exports.Novel_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
-
+    
 
 // Handle Novel create on POST.
 exports.Novel_create_post = async function(req, res) {
@@ -120,4 +120,34 @@ exports.Novel_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+
+
+    // Handle building the view for creating a Novel.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.Novel_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('Novelcreate', { title: 'Novel Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+// Handle building the view for updating a Novel.
+// query provides the id
+exports.Novel_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await Novel.findById(req.query.id)
+    res.render('Novelupdate', { title: 'Novel Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    
     

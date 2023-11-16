@@ -7,6 +7,8 @@ router.get('/', Novel_controlers.Novel_view_all_Page );
 /* GET detail Novel page */
 router.get('/detail', Novel_controlers.Novel_view_one_Page);
 /* GET create Novel page */
-router.get('/create', Novel_controlers.costume_create_Page);
+router.get('/create', Novel_controlers.Novel_create_Page);
+/* GET create update page */
+router.get('/update', Novel_controlers.Novel_update_Page);
 
 module.exports = router;

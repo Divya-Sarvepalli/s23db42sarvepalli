@@ -10,5 +10,7 @@ router.get('/detail', Novel_controlers.Novel_view_one_Page);
 router.get('/create', Novel_controlers.Novel_create_Page);
 /* GET create update page */
 router.get('/update', Novel_controlers.Novel_update_Page);
+/* GET delete Novel page */
+router.get('/delete', Novel_controlers.Novel_delete_Page);
 
 module.exports = router;

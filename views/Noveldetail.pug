@@ -2,32 +2,34 @@ extends layout
 
 block content
   h1= title
-  - let Novelid = toShow._id
-  - let Novel_type = toShow.Novel_type
-  - let Novelcost = toShow.cost
-  - let Novelsize = toShow.size
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let Novelid = toShow._id
+    - let Novel_type = toShow.Novel_type
+    - let Novelcost = toShow.cost
+    - let Novelsize = toShow.size
 
-  div
-    div.row
-      div(class='NovelAttr mr-3') 
-        span.bold-text(style='background-color: aqua; padding: 5px;') Novel ID is:
-      div.bold-text(style='background-color: aquamarine; padding: 5px;') 
-        | #{Novelid}
+    div
+      div.row
+        div(class='NovelAttr mr-3') 
+          span.bold-text(style='background-color: aqua; padding: 5px;') Novel ID is:
+        div.bold-text(style='background-color: aquamarine; padding: 5px;') 
+          | #{Novelid}
 
-    div.row
-      div(class='NovelAttr mr-3') 
-        span.bold-text(style='background-color: aqua; padding: 5px;') Novel Type is:
-      div.bold-text(style='background-color: aquamarine; padding: 5px;') 
-        | #{Novel_type}
+      div.row
+        div(class='NovelAttr mr-3') 
+          span.bold-text(style='background-color: aqua; padding: 5px;') Novel Type is:
+        div.bold-text(style='background-color: aquamarine; padding: 5px;') 
+          | #{Novel_type}
 
-    div.row
-      div(class='NovelAttr mr-3') 
-        span.bold-text(style='background-color: aqua; padding: 5px;') Novel Size is:
-      div.bold-text(style='background-color: aquamarine; padding: 5px;') 
-        | #{Novelsize}
+      div.row
+        div(class='NovelAttr mr-3') 
+          span.bold-text(style='background-color: aqua; padding: 5px;') Novel Size is:
+        div.bold-text(style='background-color: aquamarine; padding: 5px;') 
+          | #{Novelsize}
 
-    div.row
-      div(class='NovelAttr mr-3') 
-        span.bold-text(style='background-color: aqua; padding: 5px;') Novel Cost is:
-      div.bold-text(style='background-color: aquamarine; padding: 5px;') 
-        | #{Novelcost}
+      div.row
+        div(class='NovelAttr mr-3') 
+          span.bold-text(style='background-color: aqua; padding: 5px;') Novel Cost is:
+        div.bold-text

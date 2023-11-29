@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var Account = require('./models/Account');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -32,6 +33,11 @@ var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourceRouter = require('./routes/resource');
 var NovelRouter = require('./routes/Novel');
+
+
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 require('dotenv').config();
 const connectionString =

@@ -6,16 +6,24 @@ block content
   div(class="container-fluid")
     div(class="row m-1")
       each item in items
-        - let destination = `dispatch(\"/Novel/update?id=${item._id}\")`
-        div(class="row-sm-2", class="m-1") Item #{item.Novel_type}(#{item.size}) is #{item.cost}
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
+        - let updateDestination = `dispatch("/Novel/update?id=${item._id}")`
+        - let createDestination = `dispatch("/Novel/create?id=${item._id}")`
+        - let detailDestination = `dispatch("/Novel/detail?id=${item._id}")`
+        - let deleteDestination = `dispatch("/Novel/delete?id=${item._id}")`
+        
+        div(class="row-sm-2 m-1") 
+          | Item #{item.Novel_type}(#{item.size}) is #{item.cost}
+          button.btn.btn-primary.ml-1(onclick= updateDestination) Update
+          button.btn.btn-primary.ml-1(onclick= createDestination) Create
+          button.btn.btn-primary.ml-1(onclick= detailDestination) Detail
+          button.btn.btn-primary.ml-1(onclick= deleteDestination) Delete
   script.
     function dispatch(path){
-      window.location.href=path
+      window.location.href = path;
     }
 
   .container-fluid
     .row
       each Novel, index in items
-        div(class="col-sm-2" onclick=`buy(${index})`)
+        div(class="col-sm-2", onclick=`buy(${index})`)
           h3 #{Novel.Novel_type}
